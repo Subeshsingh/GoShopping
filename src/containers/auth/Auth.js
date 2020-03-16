@@ -39,7 +39,9 @@ export class Auth extends Component {
             }
         },
         isValid:false,
-    }
+    };
+//Methods for validating the each input and entire form
+
     checkValidity = (value,rules) => {
         let isValid= true;
         if(!rules){
@@ -57,13 +59,14 @@ export class Auth extends Component {
         if ( rules.maxLength ) {
             isValid = (value.length <= rules.maxLength) && isValid
         }
+
         if(rules.isEmail){
             const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
             isValid = pattern.test( value ) && isValid;
         }
 
         return isValid;
-    }
+    };
 
 
 
@@ -79,10 +82,12 @@ export class Auth extends Component {
             }
             this.setState({auth: updatedAuth});
     }
+
     submitHandler = (event) =>{
         event.preventDefault();
         console.log("Submit");
     }
+    
     render() {
         const formElementArray=[];
         for(let ele in this.state.auth){

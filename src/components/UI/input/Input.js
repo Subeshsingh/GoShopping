@@ -2,10 +2,10 @@ import React from 'react'
 import './Input.css';
 
 const Input = (props) => {
-    
-    let inputElement=null;
 
-    switch (props.elemrntType){
+    let inputElement=null;
+    switch (props.elementType){
+        
         case('input'):
             inputElement = (
                 <input 
