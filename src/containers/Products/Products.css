@@ -1,9 +1,11 @@
 /* Remove extra left and right margins, due to padding */
-.row {margin: 0 -5px;}
+.row {
+    text-align: center;
+}
 
 /* Clear floats after the columns */
 .row:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }

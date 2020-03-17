@@ -1,14 +1,16 @@
 import React from 'react'
 import './Product.css';
-import {connect} from 'react-redux';
 
-const Product = () => {
+const Product = (props) => {
+    console.log(props.name);
+    console.log(props.price);
+    console.log(props.description);
     return (    
             <div className="column">
                 <div className="card">
-                    <h3>Card 1</h3>
-                    <p>Some text</p>
-                    <p>Some text</p>
+                    <h3>{props.name}</h3>
+                    <p>{props.price}</p>
+                    <p>{props.description}</p>
                 </div>
            </div>
     );

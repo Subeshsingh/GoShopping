@@ -4,3 +4,7 @@ export {
     authCheckState,
     signup,
 } from './auth';
+
+export {
+    fetchProducts
+} from './Products';

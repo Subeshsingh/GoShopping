@@ -14,6 +14,7 @@
 @media (min-width: 600px) {
     .Auth {
         width: 500px;
+        background-color:midnightblue; 
     }
 }
 
@@ -21,7 +22,7 @@
     transition-duration: 0.2s;
     padding:.3em;
     color:white;
-    background-color:midnightblue;
+    background-color:goldenrod;
     font-size: medium;
     border-radius: 5px;
   }

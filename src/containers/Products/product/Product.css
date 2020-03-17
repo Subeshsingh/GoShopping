@@ -1,7 +1,8 @@
 .column {
     float: left;
-    width: 25%;
+    width: 23%;
     padding: 0 10px;
+    margin-bottom: 1em;
   }
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -11,7 +12,7 @@
   }
   @media screen and (max-width: 600px) {
     .column {
-      width: 100%;
+      width: 40%;
       display: block;
       margin-bottom: 20px;
     }

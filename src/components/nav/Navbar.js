@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import './Navbar.css';
 import Navitem from './NavItem';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 const Navbar = (props) => {
     return (

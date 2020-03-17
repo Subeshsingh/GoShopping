@@ -7,6 +7,7 @@ import Auth from './containers/auth/login/Auth';
 import SignUp from './containers/auth/signup/SingnUp';
 import Navbar from './components/nav/Navbar';
 import Logout from './containers/auth/logout/Logout';
+import Products from './containers/Products/Products';
 
 import {Route , Switch, Redirect} from 'react-router-dom';
 
@@ -22,6 +23,7 @@ class  App extends Component {
           <Switch>
               <Route path='/login' exact component={Auth}/>
               <Route path='/signup' exact component={SignUp}/>
+              <Route path='/' exact component={Products}/>
               <Redirect to="/"/> 
           </Switch>
         );
@@ -29,17 +31,17 @@ class  App extends Component {
           router =(
             <Switch>
               <Route path='/logout' exact component={Logout}/>
+              <Route path='/' exact component={Products}/>
               <Redirect to="/"/>
             </Switch> 
           );
       }
 
     return ( 
-          <Fragment>
+          <div className="App">
             <Navbar authenticated={this.props.isAuthenticated}/>
-            <p> Hello I am Main Page Of this Application change Link to /login fro Login Page</p>
               {router}    
-          </Fragment>
+          </div>
     );
   }
 }
