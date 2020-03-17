@@ -1,0 +1,10 @@
+.navitem{
+    text-decoration: none;
+    display: inline-flexbox;
+    color: gold;
+    padding: .5em;
+}
+ a:hover {
+   /* text-decoration: underline; */
+   font-weight: bold;
+}

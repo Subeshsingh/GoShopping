@@ -21,23 +21,87 @@ export const authFail = (error) => {
         error: error
     };
 };
+export const logOut = () =>{
+    localStorage.removeItem('token');
+    localStorage.removeItem('expirationDate');
+    localStorage.removeItem('userId');
+    return {
+            type:actionTypes.AUTH_LOGOUT
+        };
+}
 
-export const auth = (email, password, isSignup) => {
+export const checkAuthTimeOut = (expirationtime) =>{
+    return dispatch =>{
+        setTimeout(()=>{
+            dispatch(logOut());
+        }, expirationtime*1000);
+    }
+}
+
+
+export const auth = (email, password) => {
+    return dispatch => {
+        dispatch(authStart());
+        const authData = {
+            email: email,
+            password: password
+        };
+        let url ='http://localhost:8000/login';
+        axios.post(url, authData)
+            .then(response => {
+                console.log(response);
+                const expirationDate= new Date( new Date().getTime() + response.data.expiresIn * 1000);
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('expirationDate', expirationDate);
+                localStorage.setItem('userId', response.data.email);
+                dispatch(authSuccess(response.data.token, response.data.email));
+                dispatch(checkAuthTimeOut(response.data.expiresIn));
+            })
+            .catch(err => {
+                dispatch(authFail(err.response.data.error));
+            });
+    };
+};
+
+export const signup = (email, password,cnfpassword) => {
     return dispatch => {
         dispatch(authStart());
         const authData = {
             email: email,
             password: password,
-            returnSecureToken: true
+            cnfpassword: cnfpassword
         };
-        let url ='';
+        let url ='http://localhost:8000/signup';
         axios.post(url, authData)
             .then(response => {
-               // console.log(response);
-                dispatch(authSuccess(response.data.idToken, response.data.localId));
+                console.log(response);
+                const expirationDate= new Date( new Date().getTime() + response.data.expiresIn * 1000);
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('expirationDate', expirationDate);
+                localStorage.setItem('userId', response.data.email);
+                dispatch(authSuccess(response.data.token, response.data.email));
+                dispatch(checkAuthTimeOut(response.data.expiresIn));
             })
             .catch(err => {
                 dispatch(authFail(err.response.data.error));
             });
+    };
+};
+
+export const authCheckState = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            dispatch(logOut());
+        } else {
+            const expirationDate = new Date(localStorage.getItem('expirationDate'));
+            if (expirationDate <= new Date()) {
+                dispatch(logOut());
+            } else {
+                const userId = localStorage.getItem('userId');
+                dispatch(authSuccess(token, userId));
+                dispatch(checkAuthTimeOut((expirationDate.getTime() - new Date().getTime()) / 1000 ));
+            }   
+        }
     };
 };

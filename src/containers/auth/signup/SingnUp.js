@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
-import Input from '../../components/UI/input/Input';
-import './Auth.css';
-import * as actions from '../../store/actions/index';
+import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-export class Auth extends Component {
+import Input from '../../../components/UI/input/Input';
+import './SignUp.css';
+import * as actions from '../../../store/actions/index';
+import Spinner from '../../../components/UI/spinner/Spinner';
+
+
+export class SignUp extends Component {
     state={
         auth:{
             email:{
@@ -36,6 +39,21 @@ export class Auth extends Component {
                 },
                 valid:false,
                 touched:false
+            },
+            cnfpassword:{
+                elementType: 'input',
+                label:'Confirm Password :',
+                elementConfig:{
+                    type:'password',
+                    placeholder:'Enter Password again',
+                },
+                value:'',
+                validation:{
+                    required: true,
+                    confirmpassword: true
+                },
+                valid:false,
+                touched:false
             }
         },
         isValid:false,
@@ -64,6 +82,9 @@ export class Auth extends Component {
             const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
             isValid = pattern.test( value ) && isValid;
         }
+        if(rules.confirmpassword){
+            isValid = ( value === this.state.auth.password.value) && isValid;
+        }
 
         return isValid;
     };
@@ -85,9 +106,10 @@ export class Auth extends Component {
 
     submitHandler = (event) =>{
         event.preventDefault();
-        console.log("Submit");
+        //console.log("Submit");
+        this.props.onSignup( this.state.auth.email.value, this.state.auth.password.value , this.state.auth.cnfpassword.value);
     }
-    
+
     render() {
         const formElementArray=[];
         for(let ele in this.state.auth){
@@ -108,13 +130,21 @@ export class Auth extends Component {
                 value={formElem.config.value} 
                 changed={(event)=> this.inputChangeHandler(event, formElem.id)}/>
         ));
+        if(this.props.loading){
+            form = <Spinner/>
+        }
+        let errorMessage=null;
 
+        if(this.props.error){
+            errorMessage=<p>{this.props.error}</p>
+        }
         return (
             <div className="Auth">
-                <p><strong>Please enter the Details</strong></p>
                 <form onSubmit={this.submitHandler}>
+                    {errorMessage}
+                    <p><strong>Please enter the Details</strong></p>
                     {form}
-                    <button className="button">Login</button>
+                    <button className="button">SignUp</button>
                 </form>
             </div>
         )
@@ -130,9 +160,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: ( email, password) => dispatch( actions.auth( email, password) ),
+        onSignup: ( email, password,cnfpassword) => dispatch( actions.signup( email, password,cnfpassword) ),
     };
 };
 
 
-export default connect (mapStateToProps,mapDispatchToProps)(Auth);
+export default connect (mapStateToProps,mapDispatchToProps)(SignUp);
