@@ -2,19 +2,20 @@
     margin: 20px auto;
     width: 80%;
     text-align: center;
-    box-shadow: 0 2px 3px #ccc;
+    box-shadow:3px 5px 12px slategrey;
     border: 1px solid #eee;
     padding: 10px;
     box-sizing: border-box;
     border-radius: 2px;
-    background-color:midnightblue;
+    background-color:#191970;
     padding: 20px;
+    color: goldenrod;
+   
 }
 
 @media (min-width: 600px) {
     .Auth {
         width: 500px;
-        background-color:midnightblue; 
     }
 }
 
@@ -22,12 +23,12 @@
     transition-duration: 0.2s;
     padding:.3em;
     color:white;
-    background-color:goldenrod;
+    background-color:#191970;
     font-size: medium;
     border-radius: 5px;
+    cursor: pointer;
   }
   
   .button:hover {
-    background-color: green; /* Green */
-    color: white;
+    font-weight: bolder;
   }

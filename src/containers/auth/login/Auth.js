@@ -115,16 +115,15 @@ export class Auth extends Component {
         if(this.props.loading){
             form = <Spinner/>
         }
-        let errorMessage=null;
+        let errorMessage=(<p><strong>Please enter the Details</strong></p>);
 
         if(this.props.error){
-            errorMessage=<p>{this.props.error}</p>
+            errorMessage=<p style={{color:'red'}}>{this.props.error}</p>
         }
         return (
             <div className="Auth">
                 <form onSubmit={this.submitHandler}>
-                    {errorMessage}
-                    <p><strong>Please enter the Details</strong></p>
+                 {errorMessage}    
                     {form}
                     <button className="button">Login</button>
                 </form>

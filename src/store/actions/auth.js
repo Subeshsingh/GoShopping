@@ -74,7 +74,7 @@ export const signup = (email, password,cnfpassword) => {
         let url ='http://localhost:8000/signup';
         axios.post(url, authData)
             .then(response => {
-                console.log(response);
+                console.log(response.data);
                 const expirationDate= new Date( new Date().getTime() + response.data.expiresIn * 1000);
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem('expirationDate', expirationDate);

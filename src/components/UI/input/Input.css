@@ -2,12 +2,13 @@
     width: 95%;
     padding: 5px;
     margin: 5px;
+  
 }
 
 .Label{
     float: left;
     margin-left: 5px;
-
+    color: #FFD700;
 }
 
 .InputWrapper{

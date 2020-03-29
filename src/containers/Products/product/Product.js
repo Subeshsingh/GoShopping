@@ -2,9 +2,7 @@ import React from 'react'
 import './Product.css';
 
 const Product = (props) => {
-    console.log(props.name);
-    console.log(props.price);
-    console.log(props.description);
+   
     return (    
             <div className="column">
                 <div className="card">

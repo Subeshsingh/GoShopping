@@ -1,4 +1,4 @@
-import React, { Fragment,Component } from 'react';
+import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import * as actions from './store/actions/index'
 
@@ -32,7 +32,7 @@ class  App extends Component {
             <Switch>
               <Route path='/logout' exact component={Logout}/>
               <Route path='/' exact component={Products}/>
-              <Redirect to="/"/>
+              <Redirect to="/" />
             </Switch> 
           );
       }
