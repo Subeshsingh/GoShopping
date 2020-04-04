@@ -1,20 +1,14 @@
-.column {
-    float: left;
-    width: 23%;
-    padding: 0 10px;
-    margin-bottom: 1em;
-  }
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    text-align: center;
-    background-color: #f1f1f1;
-  }
-  @media screen and (max-width: 600px) {
-    .column {
-      width: 40%;
-      display: block;
-      margin-bottom: 20px;
-    }
-  }
-  
+.div.card{
+  padding: 0rem;
+  cursor: pointer;
+}
+.card-body{
+  padding: .5rem;
+}
+.cardButton{
+  display: none;
+  position: relative;
+}
+.card-body:hover .cardButton{
+  display: block;
+}

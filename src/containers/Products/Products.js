@@ -4,6 +4,7 @@ import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/spinner/Spinner';
 import Product from './product/Product';
 import './Products.css';
+import {CardGroup,CardColumns} from 'react-bootstrap';
 
 export class Products extends Component {
     
@@ -29,9 +30,11 @@ export class Products extends Component {
                 ));
         // console.log(this.props.products[0]);
         return (
-            <div className="row">
+            <>
+            <CardColumns>
                 {products}
-            </div>
+            </CardColumns>
+            </>
         );
     }
 }

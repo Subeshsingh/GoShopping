@@ -1,0 +1,67 @@
+.mainnav{
+    margin-bottom: 1em;
+    background-color: midnightblue;
+}
+.nav-link{
+    color: goldenrod !important;
+}
+.backDrop{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index:100;
+    left: 0;
+    top: 0;
+    color: rgba(0,0,0,0.5);
+}
+.SideDrawer {
+    display: flex !important;
+    flex-flow: column;
+    position: fixed;
+    width: 280px;
+    max-width: 60%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2000;
+    background-color:midnightblue;
+    padding: 1rem .5 rem;
+    box-sizing: border-box;
+    transition: transform 0.3s ease-out;
+    overflow: auto;
+}
+.DrawerToggle {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    flex-flow: column !important;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3px 3px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-radius: 3px;
+    /* background: rgb(36,34,34,0.28); */
+}
+
+.DrawerToggle div{
+    margin: 3px;
+    width: 90%;
+    height: 3px;
+    background-color:goldenrod;
+    
+}
+.DrawerToggle :hover {
+    color:#0c6580 ;
+}
+.devider{
+    background-color: goldenrod;
+    width: 100%;
+    margin-top: 0rem;
+}
+.sideDrawerLink .nav-link{
+    text-align: justify;
+}
+.sideDrawerLink .navbar-brand{
+    margin: .5rem .5rem;
+}

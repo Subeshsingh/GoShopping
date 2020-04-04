@@ -1,11 +1,34 @@
-/* Remove extra left and right margins, due to padding */
-.row {
-    text-align: center;
+.card-columns{
+    column-gap: 0.8rem;
+    margin: auto;
 }
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
+@media only screen and (min-device-width : 320px){
+    /* Styles */
+    .card-columns{
+        column-count: 1 !important;
+        padding: 1rem;
+    }
+}
+    
+    /* Smartphones (landscape) ----------- */
+@media only screen and (min-device-width : 568px) {
+    /* Styles */
+    .card-columns{
+        column-count: 2 !important;
+        padding: 0rem;
+    }
+}
+@media only screen and (min-device-width : 768px) {
+    /* Styles */
+    .card-columns{
+        column-count: 3 !important;
+        padding: 0rem;
+    }
+}
+@media only screen and (min-device-width : 1024px){
+    .card-columns{
+        column-count: 4 !important;
+        padding: 0rem;
+    }
 }

@@ -5,7 +5,7 @@ import Input from '../../../components/UI/input/Input';
 import './Auth.css';
 import * as actions from '../../../store/actions/index';
 import Spinner from '../../../components/UI/spinner/Spinner';
-
+import {Modal} from 'react-bootstrap';
 
 export class Auth extends Component {
     state={

@@ -5,8 +5,7 @@ import * as actions from './store/actions/index'
 import './App.css';
 import Auth from './containers/auth/login/Auth';
 import SignUp from './containers/auth/signup/SingnUp';
-import Navbar from './components/nav/Navbar';
-import Logout from './containers/auth/logout/Logout';
+import NavbarS from './components/nav/NavbarS';
 import Products from './containers/Products/Products';
 
 import {Route , Switch, Redirect} from 'react-router-dom';
@@ -30,7 +29,6 @@ class  App extends Component {
       if(this.props.isAuthenticated){
           router =(
             <Switch>
-              <Route path='/logout' exact component={Logout}/>
               <Route path='/' exact component={Products}/>
               <Redirect to="/" />
             </Switch> 
@@ -39,8 +37,10 @@ class  App extends Component {
 
     return ( 
           <div className="App">
-            <Navbar authenticated={this.props.isAuthenticated}/>
+            <NavbarS />
+             <div className="container">
               {router}    
+             </div> 
           </div>
     );
   }
